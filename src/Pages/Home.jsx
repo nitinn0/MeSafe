@@ -23,7 +23,7 @@ const Home = () => {
           </p>
           </div>
           <div className="btn-home flex"> <NavLink to="/DetectAi"> <button>Detect Ai</button> </NavLink >
-         <NavLink to="/VideoModeration"> <button>Detect VideoModeration</button> </NavLink >
+         <NavLink to="/VideoModeration"> <button> Deepfake Image/ Video</button> </NavLink >
      </div>
             
       </main>

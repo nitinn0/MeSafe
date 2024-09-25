@@ -24,7 +24,7 @@ else if (value==='VideoModeration') {
               Menu
             </option>
             <option value="DetectAI">Detect AI</option>
-            <option value="VideoModeration">VideoModeration</option>
+            <option value="VideoModeration"> Deepfake Image/ Video</option>
           </select>
         </div>
 

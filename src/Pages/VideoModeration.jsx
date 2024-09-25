@@ -97,7 +97,7 @@ const VideoModeration = () => {
   return (
     <div className="container-video-moderation container flex">
       <section className="section-moderation flex">
-        <h2 className="video-moderation-main-heading">Video Moderation</h2>
+        <h2 className="video-moderation-main-heading"> Deepfake Image/ Video</h2>
         
         {/* File input for video upload */}
         <div className="get-video-input flex">
@@ -110,7 +110,7 @@ const VideoModeration = () => {
         {/* Buttons for navigation and moderation */}
         <div className="btn-Moderate-video flex">
           <button onClick={() => navigate(-1)}>Go Back</button>
-          <button onClick={handleCheckVideoModeration}>Moderate</button>
+          <button onClick={handleCheckVideoModeration}>Detect</button>
         </div>
 
         {/* Loader to indicate the video is being checked */}
