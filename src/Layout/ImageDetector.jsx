@@ -24,7 +24,7 @@ const ImageDetector = () => {
             onClick={() => navigate('/DetectAI')}
             style={{cursor:"pointer"}}
           >
-            — Start Checking
+            — Detect AI
           </a>
         </div>
       </div>

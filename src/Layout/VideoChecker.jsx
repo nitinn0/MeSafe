@@ -20,7 +20,7 @@ Detect deepfakes for video KYC, scams, and misinformation campaigns.
         <div className="mt-12">
           <a
             className="text-green-400 text-2xl border-b-2 border-green-400 pb-2 hover:text-green-300 transition duration-300 cursor-pointer"
-            onClick={() => navigate('/VideoModeration')}
+            href="http://147.93.18.13:5000/"
           >
             — Start Checking
           </a>
