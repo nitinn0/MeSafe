@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeSafe - AI Deepfake Detection SaaS</title>
+    <style>
+        body {
+            background-color: #0A3152;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #162b45;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff9800;
+        }
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .navbar ul li {
+            margin: 0 15px;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .navbar ul li a:hover {
+            color: #ff9800;
+        }
+
+        /* Container */
+        .container {
+            max-width: 600px;
+            margin: 80px auto;
+            background: #162b45;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff9800;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 5px;
+            background: #0A3152;
+            color: white;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            border: none;
+            background: #ff9800;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e68900;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #203c5a;
+            border-radius: 8px;
+            display: none;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .pricing h2 {
+            color: #ff9800;
+            font-size: 28px;
+        }
+
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .plan {
+            background: #162b45;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .plan h3 {
+            color: #ff9800;
+        }
+
+        .plan p {
+            font-size: 14px;
+        }
+
+        .plan .price {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .plan button {
+            width: 100%;
+            padding: 10px;
+        }
+
+        /* API Docs Section */
+        .api-docs {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .api-docs pre {
+            background: #203c5a;
+            padding: 15px;
+            text-align: left;
+            border-radius: 5px;
+            color: white;
+            overflow-x: auto;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #162b45;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">MeSafe</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">API Docs</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- AI Detection Tool -->
+    <div class="container">
+        <h1>AI Deepfake Detection</h1>
+        <p>Upload an image or video to check if it is AI-generated.</p>
+        <form id="uploadForm">
+            <input type="file" name="file" id="fileInput" required>
+            <button type="submit">Upload & Analyze</button>
+        </form>
+        <div class="result" id="result">
+            <p id="resultText">Processing...</p>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div class="pricing">
+        <h2>Pricing Plans</h2>
+        <div class="pricing-container">
+            <div class="plan">
+                <h3>Basic</h3>
+                <p>For small projects</p>
+                <p class="price">$9.99/month</p>
+                <button>Get Started</button>
+            </div>
+            <div class="plan">
+                <h3>Pro</h3>
+                <p>For growing businesses</p>
+                <p class="price">$29.99/month</p>
+                <button>Get Started</button>
+            </div>
+            <div class="plan">
+                <h3>Enterprise</h3>
+                <p>Custom solutions</p>
+                <p class="price">Contact us</p>
+                <button>Contact Sales</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- API Documentation -->
+    <div class="api-docs">
+        <h2>How to Integrate Our API</h2>
+        <p>Use MeSafe's API to detect AI-generated images in your platform.</p>
+        <pre>
+            POST /api/detect
+            {
+                "file": "image_or_video.mp4"
+            }
+        </pre>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2025 MeSafe | AI Deepfake Detection SaaS
+    </div>
+
+    <script>
+        document.getElementById("uploadForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            let fileInput = document.getElementById("fileInput").files[0];
+            let resultDiv = document.getElementById("result");
+            let resultText = document.getElementById("resultText");
+
+            if (!fileInput) {
+                resultText.innerHTML = `<span style="color: red;">Please select a file to upload.</span>`;
+                resultDiv.style.display = "block";
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append("file", fileInput);
+
+            resultDiv.style.display = "block";
+            resultText.innerHTML = "Processing...";
+
+            try {
+                let response = await fetch("/upload", { method: "POST", body: formData });
+                let data = await response.json();
+                let outputData = JSON.parse(data.output);
+                resultText.innerHTML = outputData.ai_generated 
+                    ? `<span style="color: red;">⚠️ AI Generated!</span>` 
+                    : `<span style="color: green;">✅ Not AI Generated!</span>`;
+            } catch {
+                resultText.innerHTML = `<span style="color: red;">Error uploading file!</span>`;
+            }
+        });
+    </script>
+
+</body>
+</html>

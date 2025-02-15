@@ -20,8 +20,8 @@ const ImageDetector = () => {
         </p>
         <div className="mt-10">
           <a 
-            className="text-green-600 text-2xl border-b-2 border-green-500 pb-1 hover:text-green-700 transition duration-300"
-            onClick={() => navigate('/DetectAI')}
+            className="text-green-600 text-3xl border-b-2 border-green-500 pb-1 hover:text-green-700 transition duration-300"
+            href="http://147.93.18.13:5000/"
             style={{cursor:"pointer"}}
           >
             — Detect AI

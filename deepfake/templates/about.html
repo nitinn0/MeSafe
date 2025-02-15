@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About MeSafe - AI Deepfake Detection</title>
+    <style>
+        body {
+            background-color: #0A3152;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #162b45;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        h1, h2 {
+            color: #ff9800;
+            text-align: center;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 16px;
+            text-align: justify;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #203c5a;
+            border-radius: 8px;
+        }
+        .highlight {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        .api-box {
+            background: #0d2538;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+        }
+        .btn {
+            display: block;
+            width: 200px;
+            text-align: center;
+            margin: 20px auto;
+            padding: 12px;
+            background: #ff9800;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #e68900;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>About MeSafe</h1>
+        <p>MeSafe is an <span class="highlight">AI-powered deepfake detection system</span> that ensures authenticity in digital media. In an era of AI-generated content, businesses and individuals need reliable verification to prevent fraud, misinformation, and brand damage.</p>
+
+        <div class="section">
+            <h2>Why Deepfake Detection Matters?</h2>
+            <p>Deepfake technology is being misused across various industries. Fake images and videos are used for fraud, misleading news, and social media manipulation. MeSafe helps businesses verify content to maintain trust.</p>
+            <p><span class="highlight">Example:</span> A restaurant faced a scandal when a competitor spread AI-generated images of "spoiled food." MeSafe’s AI instantly flagged the images as deepfakes, saving the restaurant’s reputation.</p>
+        </div>
+
+        <div class="section">
+            <h2>How It Works?</h2>
+            <p>MeSafe uses deep learning and AI algorithms to analyze files and detect deepfakes. It examines metadata, pixel structures, and AI-generated inconsistencies.</p>
+            <ul>
+                <li><span class="highlight">Metadata Analysis:</span> Detects inconsistencies in file properties.</li>
+                <li><span class="highlight">Pixel Pattern Recognition:</span> Identifies AI-generated patterns.</li>
+                <li><span class="highlight">Facial Analysis:</span> Detects unnatural face distortions.</li>
+                <li><span class="highlight">Audio-Video Sync:</span> Checks if voices match lip movements.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Who Can Benefit?</h2>
+            <p>MeSafe helps industries where content authenticity is crucial:</p>
+            <ul>
+                <li>📌 <span class="highlight">Restaurants:</span> Prevent fake food images from harming reputation.</li>
+                <li>📌 <span class="highlight">E-commerce:</span> Block AI-generated product reviews.</li>
+                <li>📌 <span class="highlight">Social Media:</span> Detect and remove deepfake content.</li>
+                <li>📌 <span class="highlight">Law Enforcement:</span> Identify fake evidence in legal cases.</li>
+                <li>📌 <span class="highlight">News & Media:</span> Verify videos before publishing.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>MeSafe API for Businesses</h2>
+            <p>Integrate MeSafe AI detection into your platform with our API.</p>
+            <div class="api-box">
+                <p><strong>Example API Request:</strong></p>
+                <code>
+                    curl -X POST "https://api.mesafe.ai/detect" \
+                    -H "Authorization: Bearer YOUR_API_KEY" \
+                    -F "file=@image.jpg"
+                </code>
+            </div>
+            <div class="api-box">
+                <p><strong>Example API Response:</strong></p>
+                <code>
+                    {
+                        "ai_generated": true,
+                        "confidence": 97.8,
+                        "details": "Detected GAN-generated pixel patterns"
+                    }
+                </code>
+            </div>
+        </div>
+
+        <a href="https://mesafe.ai/signup" class="btn">Get Started</a>
+    </div>
+
+</body>
+</html>

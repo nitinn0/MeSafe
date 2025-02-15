@@ -25,17 +25,13 @@ const Home = () => {
           </h1>
 
           <div className="mt-12 flex justify-center gap-10">
-            <NavLink to="/DetectAi">
-              <button className="bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 from-blue-300 to-blue-600 text-white px-20 py-7 rounded-xl text-2xl font-semibold shadow-lg transition duration-300 transform hover:scale-110 hover:from-blue-500 hover:to-blue-700 hover:shadow-xl">
+            <a className="bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 from-blue-300 to-blue-600 text-white px-20 py-7 rounded-xl text-2xl font-semibold shadow-lg transition duration-300 transform hover:scale-110 hover:from-blue-500 hover:to-blue-700 hover:shadow-xl" href='http://147.93.18.13:5000/'>
                 Detect AI
-              </button>
-            </NavLink>
+            </a>
 
-            <NavLink to="/VideoModeration">
-              <button className="bg-gradient-to-bl from-gray-200 to-indigo-600 text-gray-900 px-20 py-7 rounded-xl text-2xl font-semibold shadow-lg transition duration-300 transform hover:scale-110 hover:from-white hover:to-blue-300 hover:text-blue-900 hover:shadow-xl">
+            <a className="bg-gradient-to-bl from-gray-200 to-indigo-600 text-gray-900 px-20 py-7 rounded-xl text-2xl font-semibold shadow-lg transition duration-300 transform hover:scale-110 hover:from-white hover:to-blue-300 hover:text-blue-900 hover:shadow-xl" href='http://147.93.18.13:5000/'>
                 Deepfake Detection
-              </button>
-            </NavLink>
+            </a>
           </div>
         </main>
       </div>
