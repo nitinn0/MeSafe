@@ -1,14 +1,16 @@
-import React from 'react'
-import loader from "./Loader.gif"
+import React from "react";
+import loader from "./Loader.gif";
+
 const Loader = () => {
   return (
-    <div className="container container-loder">
-        <figure>
-            <img src={loader} alt="" width={"100%"} height={"auto"} />
-        </figure>
-      
+    <div className="flex justify-center items-center min-h-[200px]">
+      <img
+        src={loader}
+        alt="Loading..."
+        className="mt-8 w-20 h-20 object-contain animate-spin"
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;
