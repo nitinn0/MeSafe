@@ -18,12 +18,12 @@ const VideoChecker = () => {
 Detect deepfakes for video KYC, scams, and misinformation campaigns.
         </p>
         <div className="mt-12">
-          <a
-            className="text-green-400 text-2xl border-b-2 border-green-400 pb-2 hover:text-green-300 transition duration-300 cursor-pointer"
-            href="http://147.93.18.13:5000/"
+          <button
+            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-8 py-3 rounded-xl text-xl font-semibold shadow-lg transition duration-300 transform hover:scale-105 hover:shadow-xl"
+            onClick={() => navigate("/VideoModeration")}
           >
-            — Start Checking
-          </a>
+            Start Checking
+          </button>
         </div>
       </div>
 

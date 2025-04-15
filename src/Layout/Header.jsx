@@ -45,22 +45,22 @@ export const Header = () => {
 
         {isOpen && (
           <div className="absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-lg transform scale-95 origin-top-right transition-all duration-200 ease-in-out hover:scale-100 overflow-hidden text-center">
-            <a
+            <div
               className="block w-full mb-2 p-4 text-xl text-white font-bold 
-                         bg-indigo-500 hover:bg-indigo-500 hover:text-white 
+                         bg-indigo-500 hover:bg-indigo-600 hover:text-white 
                          transition-all duration-300 cursor-pointer"
-              href="http://147.93.18.13:5000/"
+              onClick={() => handleSelectClick("DetectAi")}
             >
               Detect AI
-            </a>
-            <a
+            </div>
+            <div
               className="block w-full p-4 text-xl text-white font-bold 
-                         bg-indigo-500 hover:bg-indigo-500 hover:text-white 
+                         bg-indigo-500 hover:bg-indigo-600 hover:text-white 
                          transition-all duration-300 cursor-pointer"
-              href="http://147.93.18.13:5000/"
+              onClick={() => handleSelectClick("VideoModeration")}
             >
-              Deepfake Detection
-            </a>
+              Video Moderation
+            </div>
           </div>
         )}
       </div>

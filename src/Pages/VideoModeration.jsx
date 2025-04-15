@@ -2,60 +2,38 @@ import React, { useState } from "react";
 import { IoMdCloudUpload } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import axios from "axios";
 import Loader from "../Layout/Loader";
+import { moderateVideo } from "../services/api";
 
 const VideoModeration = () => {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [moderationResult, setModerationResult] = useState(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
+      setError(null);
     }
   };
 
   const handleCheckVideoModeration = async () => {
     if (!file) {
-      alert("Please upload a video first.");
+      setError("Please upload a video first.");
       return;
     }
 
-    const api_user = "1504143661";
-    const api_secret = "JtpeQRUS7TcBLkXqAfykUuvwzL4MXur3";
-
     setLoading(true);
-
-    const formData = new FormData();
-    formData.append("media", file);
-    formData.append(
-      "models",
-      "nudity-2.1,violence,weapon,offensive,recreational_drug,alcohol,gambling,tobacco,gore-2.0"
-    );
-    formData.append("api_user", api_user);
-    formData.append("api_secret", api_secret);
+    setError(null);
 
     try {
-      const response = await axios.post(
-        "https://api.sightengine.com/1.0/video/check-sync.json",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      if (response.data && response.data.status === "success" && response.data.data.frames) {
-        setModerationResult(response.data);
-      } else {
-        alert("Unexpected response from the server.");
-      }
-    } catch (error) {
-      alert("Video moderation failed: " + error.message);
+      const result = await moderateVideo(file);
+      setModerationResult(result);
+    } catch (err) {
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -63,9 +41,7 @@ const VideoModeration = () => {
 
   return (
     <div className="bg-gradient-to-r from-blue-700 via-purple-600 to-pink-500 flex flex-col items-center justify-center min-h-screen p-10">
-      
       <div className="bg-white shadow-2xl rounded-3xl p-24 w-full max-w-3xl text-center transform transition-all duration-300 hover:scale-105">
-        
         <h2 className="text-5xl font-bold text-indigo-500 mb-12 tracking-wide drop-shadow-md">
           Video Moderation
         </h2>
@@ -110,6 +86,12 @@ const VideoModeration = () => {
 
         {loading && <Loader />}
 
+        {error && (
+          <div className="mt-8 p-5 rounded-xl font-semibold text-xl bg-red-200 text-red-800">
+            {error}
+          </div>
+        )}
+
         {!loading && moderationResult && (
           <div className={`mt-8 p-5 rounded-xl font-semibold text-xl transition-all duration-300 shadow-md hover:shadow-lg ${
             moderationResult.data.frames.length > 0 
@@ -121,9 +103,7 @@ const VideoModeration = () => {
               : "This video is safe."}
           </div>
         )}
-
       </div>
-      
     </div>
   );
 };

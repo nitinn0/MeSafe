@@ -3,27 +3,29 @@ import { IoMdCloudUpload } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Loader from "../Layout/Loader";
+import { detectAI } from "../services/api";
 
 const DetectAI = () => {
   const [file, setFile] = useState(null);
   const [detectionResult, setDetectionResult] = useState(null);
   const [metadata, setMetadata] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
+      setError(null);
       extractMetadata(selectedFile);
     }
   };
 
-
   const extractMetadata = (file) => {
     const metadataInfo = {
       name: file.name,
-      size: (file.size / 1024).toFixed(2) + " KB", // Convert to KB
+      size: (file.size / 1024).toFixed(2) + " KB",
       type: file.type,
       lastModified: new Date(file.lastModified).toLocaleString(),
     };
@@ -41,43 +43,28 @@ const DetectAI = () => {
     }
   };
 
-  const handleDetectAi = () => {
+  const handleDetectAi = async () => {
     if (!file) {
-      alert("Please upload an image or video first.");
+      setError("Please upload an image or video first.");
       return;
     }
 
-    const api_user = "1808784719";
-    const api_secret = "RMFamwQpxE95dsPP2nRmxBu5vhggVWut";
-
     setLoading(true);
+    setError(null);
 
-    const formData = new FormData();
-    formData.append("media", file);
-    formData.append("models", "genai");
-    formData.append("api_user", api_user);
-    formData.append("api_secret", api_secret);
-
-    fetch("https://api.sightengine.com/1.0/check.json", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setDetectionResult(data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-        alert("An error occurred during detection.");
-      });
+    try {
+      const result = await detectAI(file);
+      setDetectionResult(result);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="bg-gradient-to-r mt-12 from-blue-700 via-purple-600 to-pink-500 flex flex-col items-center justify-center min-h-screen p-10">
-      
       <div className="bg-white shadow-2xl rounded-3xl p-24 w-full max-w-3xl text-center transform transition-all duration-300 hover:scale-105">
-        
         <h2 className="text-5xl font-bold text-indigo-500 mb-12 tracking-wide drop-shadow-md">
           AI Detection
         </h2>
@@ -101,7 +88,6 @@ const DetectAI = () => {
         <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent my-8"></div>
         
         <div className="flex justify-center mt-14 gap-6">
-
           <button
             onClick={() => navigate(-1)}
             className="bg-gray-800 text-white px-20 mx-4 rounded-xl font-semibold text-xl transition-all duration-300 shadow-lg hover:bg-gray-600 hover:scale-105"
@@ -128,6 +114,12 @@ const DetectAI = () => {
         </div>
 
         {loading && <Loader />}
+
+        {error && (
+          <div className="mt-8 p-5 rounded-xl font-semibold text-xl bg-red-200 text-red-800">
+            {error}
+          </div>
+        )}
 
         {!loading && detectionResult && detectionResult.type && (
           <div className={`mt-8 p-5 rounded-xl font-semibold text-xl transition-all duration-300 shadow-md hover:shadow-lg ${

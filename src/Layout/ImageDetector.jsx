@@ -12,20 +12,19 @@ const ImageDetector = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 text-gray-900 mt-24 md:mt-32 pt-24">
       
       <div className="container mx-auto px-8 py-20 text-center">
-        <h1 className="text-8xl font-extrabold uppercase text-gray-800">
+        <h1 className="text-8xl font-extrabold uppercase text-gray-700">
           IMAGE AI DETECTOR
         </h1>
         <p className="text-2xl lg:max-w-4xl text-gray-600 mt-6 mx-auto">
           Detect AI-generated images, deepfake photos, and manipulated content.
         </p>
         <div className="mt-10">
-          <a 
-            className="text-green-600 text-3xl border-b-2 border-green-500 pb-1 hover:text-green-700 transition duration-300"
-            href="http://147.93.18.13:5000/"
-            style={{cursor:"pointer"}}
+          <button 
+            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-8 py-3 rounded-xl text-xl font-semibold shadow-lg transition duration-300 transform hover:scale-105 hover:shadow-xl"
+            onClick={() => navigate("/DetectAi")}
           >
-            — Detect AI
-          </a>
+            Detect AI
+          </button>
         </div>
       </div>
 
